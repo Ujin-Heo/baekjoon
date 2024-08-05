@@ -36,5 +36,8 @@
     <ClCompile Include="2563번 색종이.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="11653번 소인수분해.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
