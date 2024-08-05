@@ -30,5 +30,8 @@
     <ClCompile Include="1546번 평균.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="1152번 단어의 개수.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
