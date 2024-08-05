@@ -27,5 +27,8 @@
     <ClCompile Include="2675번 문자열 반복.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="1546번 평균.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
