@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_addition.c">
+    <ClCompile Include="2738번 행렬 덧셈.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
