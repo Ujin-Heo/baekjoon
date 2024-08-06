@@ -39,5 +39,8 @@
     <ClCompile Include="11653번 소인수분해.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="4153번 직각삼각형.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
