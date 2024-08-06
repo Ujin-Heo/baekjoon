@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/*
 int descending(const void* a, const void* b) {
 	int v1 = *(int*)a;
 	int v2 = *(int*)b;
@@ -60,3 +60,4 @@ int main() {
 	}
 
 }
+*/
