@@ -47,6 +47,7 @@ int main() {
 			if (num == primes[j]) {
 				count++;
 				prime_j = j;
+				break;
 			}
 		}
 	}
