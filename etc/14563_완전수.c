@@ -5,11 +5,11 @@
 void findFactors(int num, int* factors, int* count_ptr) {
     
     int root = (int)sqrt(num);
-    printf("\nroot of %d: %d\n", num, root);
+    // printf("\nroot of %d: %d\n", num, root);
     int count = 1;
 
     factors[0] = 1;
-    for (int i = 2; i <= root; i++) {
+    for (int i = 2; i <= root; i++) { // for (i = 1; i * i < N; i++) 이런 방법도 있다.
         if (num % i == 0) {
             if (i == num / i) {
                 factors[count] = i;
@@ -30,23 +30,22 @@ int checkPerfect(int num) {
         return -1;
     }
 
-    int* count = (int*)malloc(sizeof(int));
-    int* factors = (int*)malloc(sizeof(int) * num); // 할당 수를 num보다 줄일 수도 있을 것 같은데..
-    findFactors(num, factors, count);
+    int count = 0;
+    int* factors = (int*)malloc(sizeof(int) * (int)(2 * sqrt(num) + 1)); // num의 약수 개수는 2 * sqrt(num) - 1 이하이지만, 2곱하고 int로 바꾸면서 소숫점 절삭되는 등 오차 커버 위해 +1로 씀.
+    findFactors(num, factors, &count);
 
-    printf("factors of %d: ", num);
+    // printf("factors of %d: ", num);
     int sum = 0;
-    for (int i = 0; i < *count; i++) {
+    for (int i = 0; i < count; i++) {
         sum += factors[i];
-        printf("%d ", factors[i]);
+        // printf("%d ", factors[i]);
     }
-    printf("\n");
+    // printf("\n");
 
     int result = 0;
-    printf("sum: %d, num: %d\n", sum, num);
+    // printf("sum: %d, num: %d\n", sum, num);
     result = sum - num;
 
-    free(count);
     free(factors);
 
     return result;
@@ -59,7 +58,7 @@ void printPerfect(int num) {
     if (result < 0) {
         printf("Deficient\n");
     } else if (result > 0) {
-        printf("Abundunt\n");
+        printf("Abundant\n");
     } else {
         printf("Perfect\n");
     }
