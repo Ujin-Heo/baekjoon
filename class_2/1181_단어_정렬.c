@@ -60,7 +60,7 @@ void insertTree(TREE *pTree, char *buffer) {
     _insert(&(pTree->root), pNew);
 }
 
-void _traverse(NODE *root) {
+static void _traverse(NODE *root) {
     if (root == NULL) return;
 
     _traverse(root->left);
@@ -68,7 +68,7 @@ void _traverse(NODE *root) {
     _traverse(root->right);
 }
 
-static void traverseTree(TREE *pTree) {
+void traverseTree(TREE *pTree) {
     _traverse(pTree->root);
 }
 
