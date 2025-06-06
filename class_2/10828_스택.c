@@ -11,7 +11,7 @@ typedef struct node {
 typedef struct {
     int count;
     NODE* base;
-} STACK;
+} QUEUE;
 
 void push(STACK* stack, int n) {
 
