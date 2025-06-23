@@ -1,64 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
-    int data[2];
-    struct node* left;
-    struct node* right;
-} NODE;
+// 내장 qsort 라이브러리로 풂. qsort는 quick sort를 기반으로 하되, 여러 다른 정렬 알고리즘을 함께 사용하여 항상 O(NlogN)의 시간 복잡도를 보장하도록 함.
+// 다음번에 heap sort 혹은 merge sort를 코드로 직접 구현해서 풀어보자.
+// 계수정렬로 10^5 * 10^5 2차원 배열을 만들면 메모리 초과로 stack overflow가 일어남.
 
 typedef struct {
-    NODE* root;
-} TREE;
+    int x;
+    int y;
+} POINT;
 
-NODE* makeNode(){
-    NODE* pNew = (NODE*)malloc(sizeof(NODE));
+int compare(const void *a, const void *b) {
+    int x1 = ((POINT *)a)->x;
+    int y1 = ((POINT *)a)->y;
 
-    scanf("%d %d", &pNew->data[0], &pNew->data[1]);
-    //scanf("%d %d", pNew->data, pNew->data + 1); // 이것도 가능
-    pNew->left = NULL;
-    pNew->right = NULL;
-    return pNew;
-} 
+    int x2 = ((POINT *)b)->x;
+    int y2 = ((POINT *)b)->y;
 
-int compare(const void* a, const void* b) {
-    int x1 = ((int*)a)[0];
-    int y1 = ((int*)a)[1];
-    int x2 = ((int*)b)[0];
-    int y2 = ((int*)b)[1];
-
-    if (x1 == x2) {
-        return y1 - y2;
-    } else {
+    if (x1 != x2) {
         return x1 - x2;
-    }
-}
-
-int insert(NODE **root, NODE *newPtr, int (*compare)(const void* a, const void* b)) {
-    if (*root == NULL) {
-        *root = newPtr;
-        return 1;
-    }
-
-    if (compare(newPtr->data, (*root)->data) < 0) {
-        return insert(&(*root)->left, newPtr, compare);
     } else {
-        return insert(&(*root)->right, newPtr, compare);
+        return y1 - y2;
     }
-}
-
-void inorder_traverse(NODE* root) {
-    if (!root) return;
-    inorder_traverse(root->left);
-    printf("%d %d\n", root->data[0], root->data[1]);
-    inorder_traverse(root->right);
-}
-
-void destroy(NODE* root) {
-    if (!root) return;
-    destroy(root->left);
-    destroy(root->right);
-    free(root);
 }
 
 int main() {
@@ -66,17 +29,18 @@ int main() {
     int N = 0;
     scanf("%d", &N);
 
-    TREE* pTree = (TREE*)malloc(sizeof(TREE));
-    pTree->root = NULL;
+    POINT *pPoints = (POINT*)malloc(sizeof(POINT)*N);
+    if (!pPoints) fprintf(stderr, "failed to allocate points.");
 
-    for (int i = 0; i < N; i++) {
-        NODE* pNew = makeNode();
-        insert(&pTree->root, pNew, compare);
+    for (int i=0; i<N; i++) {
+        scanf("%d %d", &pPoints[i].x, &pPoints[i].y);
     }
 
-    inorder_traverse(pTree->root);
+    qsort(pPoints, N, sizeof(POINT), compare);
 
-    destroy(pTree->root);
-    free(pTree);
+    for (int i = 0; i < N; i++) {
+        printf("%d %d\n", pPoints[i].x, pPoints[i].y);
+    }
 
+    free(pPoints);
 }
