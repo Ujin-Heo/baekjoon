@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug (Active File)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}", // tasks.json에서 만든 실행 파일 경로
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false, // true로 바꾸면 별도 터미널 창이 뜹니다.
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "gdb에 자동 출력 설정",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++ build active file", // tasks.json의 label과 반드시 일치해야 함
+            "miDebuggerPath": "/usr/bin/gdb" // 본인 환경의 gdb 경로 (which gdb로 확인 가능)
+        }
+    ]
+}
